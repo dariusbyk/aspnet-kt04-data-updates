@@ -1,0 +1,37 @@
+@baseUrl = http://localhost:5000
+
+### Создать задачу — 201. После нового запуска первый ID равен 1.
+POST {{baseUrl}}/todoitems
+Content-Type: application/json
+
+{
+  "name": "Изучить Minimal API",
+  "isComplete": false
+}
+
+### Все задачи — 200
+GET {{baseUrl}}/todoitems
+
+### Задача по ID — 200
+GET {{baseUrl}}/todoitems/1
+
+### Изменить название и отметить выполнение — 204
+PUT {{baseUrl}}/todoitems/1
+Content-Type: application/json
+
+{
+  "name": "Minimal API изучен",
+  "isComplete": true
+}
+
+### Проверить изменения — 200
+GET {{baseUrl}}/todoitems/1
+
+### Выполненные задачи — 200
+GET {{baseUrl}}/todoitems/complete
+
+### Удалить задачу — 204
+DELETE {{baseUrl}}/todoitems/1
+
+### Проверить удаление — 404
+GET {{baseUrl}}/todoitems/1
